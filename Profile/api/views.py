@@ -63,3 +63,49 @@ class UserBankInfoView(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         except UserBankInfo.DoesNotExist:
             return Response({"error": "UserBankInfo not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+# Profile queries
+class ProfileLists(APIView):
+    """
+    Retrieve all user profiles
+    """
+    def get(self, request):
+        profiles = UserProfileService.get_all_profiles()
+        serializer = UserProfileSerializer(profiles, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ProfileDetails(APIView):
+    """
+    Retrieve a user profile by national code
+    """
+    def get(self, request, national_code):
+        profile = UserProfileService.get_profile_by_national_code(national_code)
+        if profile:
+            serializer = UserProfileSerializer(profile)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"error": "UserProfile not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+# BankInfo queries
+class BankInfoLists(APIView):
+    """
+    Retrieve all user bank infos
+    """
+    def get(self, request):
+        bank_infos = UserBankInfoService.get_all_bank_infos()
+        serializer = UserBankInfoSerializer(bank_infos, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class BankInfoDetails(APIView):
+    """
+    Retrieve a user bank info by card number
+    """
+    def get(self, request, card_number):
+        bank_info = UserBankInfoService.get_bank_info_by_card_number(card_number)
+        if bank_info:
+            serializer = UserBankInfoSerializer(bank_info)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"error": "UserBankInfo not found"}, status=status.HTTP_404_NOT_FOUND)
