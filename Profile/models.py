@@ -1,17 +1,23 @@
 from django.db import models
+from enum import Enum
+
+
+class Gender(Enum):
+    MALE = "Male"
+    FEMALE = "Female"
 
 
 class UserProfile(models.Model):
-    GENDER_CHOICES = [
-        ('male', 'Male'),
-        ('female', 'Female'),
-    ]
-
     # Personal Information
     first_name = models.CharField(max_length=255)  # نام (اجباری)
     last_name = models.CharField(max_length=255)  # نام خانوادگی (اجباری)
     national_code = models.CharField(max_length=10, unique=True)  # کد ملی (اجباری)
-    gender = models.CharField(max_length=6, choices=GENDER_CHOICES, blank=True, null=True)  # جنسیت (اختیاری)
+    gender = models.CharField(
+        max_length=6,
+        choices=[(tag.name, tag.value) for tag in Gender],
+        blank=True,
+        null=True
+    )
     passport_number = models.CharField(max_length=50, blank=True, null=True)  # شماره پاسپورت (اختیاری)
     passport_expiry_date = models.DateField(blank=True, null=True)  # تاریخ انقضای پاسپورت (اختیاری)
     is_foreign = models.BooleanField(default=False)  # خارجی هست یا نه (اختیاری)
