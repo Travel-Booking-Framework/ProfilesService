@@ -23,7 +23,7 @@ This service is developed using **Django**, **PostgreSQL** and **REST API**. Thi
 
    ```bash
    git clone https://github.com/Travel-Booking-Framework/User-Service.git
-   cd ProfilesService
+   cd Profile-Service
    ```
 
 2. **Create and Activate a Virtual Environment**:
