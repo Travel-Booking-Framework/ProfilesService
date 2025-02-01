@@ -20,3 +20,10 @@ class UserBankInfoService:
     @staticmethod
     def get_all_bank_infos():
         return UserBankInfo.objects.all()
+
+    @staticmethod
+    def get_bank_info_by_card_number(card_number):
+        try:
+            return UserBankInfo.objects.get(card_number=card_number)
+        except UserBankInfo.DoesNotExist:
+            return None

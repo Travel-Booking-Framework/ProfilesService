@@ -77,9 +77,6 @@ class ProfileLists(APIView):
 
 
 class ProfileDetails(APIView):
-    """
-    Retrieve a user profile by national code
-    """
     def get(self, request, national_code):
         profile = UserProfileService.get_profile_by_national_code(national_code)
         if profile:
@@ -100,9 +97,6 @@ class BankInfoLists(APIView):
 
 
 class BankInfoDetails(APIView):
-    """
-    Retrieve a user bank info by card number
-    """
     def get(self, request, card_number):
         bank_info = UserBankInfoService.get_bank_info_by_card_number(card_number)
         if bank_info:

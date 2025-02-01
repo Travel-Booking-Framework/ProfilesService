@@ -16,3 +16,14 @@ class UserProfileService:
     @staticmethod
     def delete_user_profile(user_profile):
         user_profile.delete()
+
+    @staticmethod
+    def get_all_profiles():
+        return UserProfile.objects.all()
+
+    @staticmethod
+    def get_profile_by_national_code(national_code):
+        try:
+            return UserProfile.objects.get(national_code=national_code)
+        except UserProfile.DoesNotExist:
+            return None
