@@ -16,3 +16,7 @@ class UserBankInfoService:
     @staticmethod
     def delete_user_bank_info(user_bank_info):
         user_bank_info.delete()
+
+    @staticmethod
+    def get_all_bank_infos():
+        return UserBankInfo.objects.all()

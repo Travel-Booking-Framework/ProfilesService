@@ -16,6 +16,6 @@ urlpatterns = [
     path('user-bank-info/<int:pk>/', UserBankInfoView.as_view(), name='update_or_delete_bank_info'),
 
     # UserBankInfo queries
-    path('user-bank-info/all/', BankInfoLists.as_view(), name='list_user_bank_infos'),
+    path('bank-info/all/', BankInfoLists.as_view(), name='list_user_bank_infos'),
     path('user-bank-info/<str:card_number>/', BankInfoDetails.as_view(), name='detail_user_bank_info'),
 ]

@@ -94,8 +94,8 @@ class BankInfoLists(APIView):
     Retrieve all user bank infos
     """
     def get(self, request):
-        bank_infos = UserBankInfoService.get_all_bank_infos()
-        serializer = UserBankInfoSerializer(bank_infos, many=True)
+        bank_infos = UserBankInfoService.get_all_bank_infos()  # داده‌ها از سرویس گرفته می‌شود
+        serializer = UserBankInfoSerializer(bank_infos, many=True)  # سریالایز داده‌ها
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
