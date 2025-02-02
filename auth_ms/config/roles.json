@@ -1,0 +1,5 @@
+{
+    "admin": ["create_user", "delete_user", "view_users", "update_users"],
+    "editor": ["view_users", "update_users"],
+    "viewer": ["view_users"]
+}

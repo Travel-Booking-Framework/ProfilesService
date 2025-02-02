@@ -1,0 +1,6 @@
+npm install
+
+.env:
+PORT=3000
+JWT_SECRET=TopSecretCode!!!:)))
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
