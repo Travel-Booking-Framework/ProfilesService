@@ -22,6 +22,8 @@ class UserProfile(models.Model):
     passport_expiry_date = models.DateField(blank=True, null=True)  # تاریخ انقضای پاسپورت (اختیاری)
     is_foreign = models.BooleanField(default=False)  # خارجی هست یا نه (اختیاری)
     date_of_birth = models.DateField(blank=True, null=True)  # تاریخ تولد (اختیاری)
+    father_name = models.CharField(blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
 
     # Contact Information
     landline_number = models.CharField(max_length=15, blank=True, null=True)  # شماره تلفن ثابت (اختیاری)
