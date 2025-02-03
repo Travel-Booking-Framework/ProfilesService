@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const getProfile = async (req, res) => {
     try {
         const user = await UserModel.getUserById(req.user.id);
+        delete user.rows[0].hashedpassword;
         res.json(user.rows[0]);
     } catch (err) {
         res.status(500).json({ message: "Error fetching profile", error: err.message });
