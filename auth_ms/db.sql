@@ -4,3 +4,4 @@ CREATE TABLE users (
     nationalCode CHAR(10) UNIQUE NOT NULL,
     hashedPassword TEXT NOT NULL
 );
+ALTER TABLE users ADD COLUMN role TEXT NOT NULL DEFAULT 'user';
