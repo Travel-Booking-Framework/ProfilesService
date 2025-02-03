@@ -16,7 +16,7 @@ const register = async (req, res) => {
         const result = await UserModel.createUser(username, nationalCode, hashedPassword, role);
         res.status(201).json({ message: "User registered", user: result.rows[0] });
     } catch (err) {
-        res.status(500).json({ message: "User already exists or error occurred", error: err.message });
+        res.status(409).json({ message: "User already exists or error occurred", error: err.message });
     }
 };
 
